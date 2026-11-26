@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>海底捞 · JD 研创台</title>
+<style>
+:root{--navy:#142235;--navy2:#20334a;--ink:#1d2938;--muted:#788494;--line:#e4e6e8;--paper:#f4f2ee;--white:#fff;--copper:#a77a53;--copper-bg:#f3ece4;--blue-bg:#edf1f5;--red:#8f5360;--shadow:0 8px 24px rgba(20,34,53,.055)}*{box-sizing:border-box}body{margin:0;background:var(--paper);font:14px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink)}button,textarea,input,select{font:inherit}button{cursor:pointer}.top{height:68px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 max(calc((100% - 1160px)/2),28px)}.brand{display:flex;align-items:center;gap:12px}.mark{height:34px;width:34px;border:1px solid #c0a183;border-radius:9px;display:grid;place-items:center;color:#dec4a8;font-size:11px;letter-spacing:.5px}.brandname{font-size:14px;letter-spacing:.5px;font-weight:650}.brandline{font-size:10px;color:#aab4c0;margin-top:1px}.topright{font-size:11px;color:#d0d5dc;display:flex;gap:18px;align-items:center}.status{border:1px solid #536173;border-radius:20px;padding:5px 10px;color:#d7c3ac}.page{max-width:1160px;margin:auto;padding:37px 28px 50px}.intro{margin-bottom:25px}.kicker{font-size:10px;letter-spacing:2px;color:var(--copper);font-weight:700}.intro h1{font-size:28px;line-height:1.25;letter-spacing:-.5px;color:var(--navy);margin:7px 0}.intro p{font-size:13px;color:var(--muted);margin:0}.modebar{display:flex;gap:7px;border-bottom:1px solid #d8d8d6;margin-bottom:20px}.mode{border:0;background:transparent;color:#788392;padding:11px 16px 12px;font-size:13px;position:relative}.mode.active{font-weight:650;color:var(--navy)}.mode.active:after{content:"";position:absolute;bottom:-1px;left:14px;right:14px;height:2px;background:var(--copper)}.layout{display:grid;grid-template-columns:370px minmax(0,1fr);gap:18px;align-items:start}.panel{background:var(--white);border:1px solid var(--line);border-radius:11px;box-shadow:var(--shadow)}.inputpanel{padding:19px}.paneltitle{font-size:13px;color:var(--navy);font-weight:700;margin-bottom:4px}.hint{color:#929ba5;font-size:11px;margin:0 0 12px}.labelrow{display:flex;align-items:center;justify-content:space-between;margin:15px 0 7px}.label{font-size:11px;color:#536071;font-weight:650}.quiet{font-size:10px;color:#8d97a3}.textarea{width:100%;min-height:280px;resize:vertical;border:1px solid #dfe3e6;background:#fcfcfb;color:#384454;padding:12px 13px;border-radius:7px;outline:none;font-size:12px;line-height:1.75}.textarea:focus,.input:focus{border-color:#9b8063;box-shadow:0 0 0 3px #a77a5314}.textarea.short{min-height:185px}.input{border:1px solid #dfe3e6;border-radius:7px;padding:9px 10px;background:#fcfcfb;width:100%;font-size:12px;outline:none}.row{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btnmain{width:100%;margin-top:14px;padding:11px 14px;border:0;background:var(--navy);color:#fff;border-radius:7px;font-size:12px;font-weight:650}.btnmain:hover{background:var(--navy2)}.btnmain .star{color:#d6b48f;margin-right:7px}.tiny{border:0;background:none;color:var(--copper);font-size:10px;padding:0}.micro{font-size:10px;color:#9aa1a9;margin:9px 0 0}.output{display:flex;flex-direction:column;gap:12px}.outhead{display:flex;align-items:flex-start;justify-content:space-between;padding:2px 2px 0}.outhead h2{font-size:16px;color:var(--navy);margin:0}.outhead p{font-size:10px;color:#929ba5;margin:3px 0 0}.toolrow{display:flex;gap:7px}.btnghost{border:1px solid #d9dde1;background:#fff;border-radius:6px;padding:7px 10px;color:#5e6b79;font-size:10px}.btnghost:hover{border-color:#b4a08a;color:var(--navy)}.block{padding:16px 17px}.blockhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.blocktitle{font-size:12px;font-weight:700;color:#2b3a4c}.sub{color:#939ca7;font-size:10px}.copy{border:1px solid #e2e4e5;color:#697585;background:#fff;border-radius:5px;padding:5px 8px;font-size:10px}.copy:hover{border-color:var(--copper);color:var(--copper)}.searchsets{display:grid;gap:8px}.searchset{display:grid;grid-template-columns:96px 1fr auto;align-items:center;gap:10px;padding:10px 11px;border:1px solid #e8e8e6;border-radius:7px;background:#fdfdfc}.setlabel{font-size:10px;color:#7b8794}.settext{font-size:12px;color:#26384b;font-weight:550}.companylist{display:flex;flex-wrap:wrap;gap:7px}.company{border:1px solid #e3e2df;background:#faf9f7;color:#3f4e5f;border-radius:5px;padding:6px 9px;font-size:11px}.company:before{content:"";display:inline-block;height:5px;width:5px;border-radius:50%;background:var(--copper);vertical-align:middle;margin-right:7px}.searchline{display:flex;flex-wrap:wrap;gap:7px}.chip{background:var(--blue-bg);color:#344a61;border-radius:4px;padding:5px 8px;font-size:10px}.divider{height:1px;background:#eff0f0;margin:13px 0}.outputhint{background:#f6f3ef;border-left:2px solid var(--copper);padding:9px 11px;color:#74716d;font-size:10px;margin-top:10px}.empty{padding:58px 24px;text-align:center;color:#929ba5}.empty .emptyicon{height:42px;width:42px;margin:0 auto 12px;border:1px solid #ddd9d2;border-radius:50%;color:var(--copper);display:grid;place-items:center;font-size:17px}.empty strong{display:block;color:#455365;font-size:12px;font-weight:600}.empty p{font-size:10px;margin:5px 0}.draftpanel{padding:19px}.draftlabel{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}.drafttitle{font-size:13px;font-weight:700;color:var(--navy)}.version{font-size:10px;color:#929ba5}.draftarea{width:100%;min-height:430px;resize:vertical;border:1px solid #e0e3e6;border-radius:7px;background:#fdfdfc;padding:16px;color:#344153;font-size:12px;line-height:1.9;outline:none}.draftarea:focus{border-color:#9b8063;box-shadow:0 0 0 3px #a77a5314}.iteration{margin-top:14px;border-top:1px solid #eceeed;padding-top:14px}.iteration label{display:block;color:#526071;font-size:11px;font-weight:650;margin-bottom:7px}.iterrow{display:flex;gap:8px}.iterrow textarea{min-height:64px;flex:1;resize:vertical;border:1px solid #dfe3e6;border-radius:7px;padding:9px 11px;font-size:11px;outline:none}.iterrow textarea:focus{border-color:#9b8063}.iterbtn{align-self:stretch;border:0;border-radius:7px;background:var(--navy);color:#fff;padding:0 15px;font-size:11px}.iterationhint{font-size:10px;color:#9aa1a9;margin:7px 0 0}.history{margin-top:14px;display:flex;gap:6px;flex-wrap:wrap}.historyitem{border:1px solid #e5e6e5;border-radius:4px;padding:4px 7px;font-size:9px;color:#727e8c;background:#fff}.historyitem.current{border-color:#c9b7a2;color:#765a3f;background:#fbf8f4}.pane{display:none}.pane.active{display:block}.toaster{position:fixed;bottom:20px;left:50%;transform:translate(-50%,12px);opacity:0;transition:.2s;background:var(--navy);color:#fff;border-radius:6px;padding:9px 13px;font-size:11px;pointer-events:none}.toaster.show{opacity:1;transform:translate(-50%,0)}.note{font-size:10px;color:#9a9fa5;text-align:center;margin-top:22px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.textarea{min-height:200px}.top{padding:0 20px}.page{padding:28px 20px}}@media(max-width:600px){.top{height:58px}.topright span:first-child{display:none}.page{padding:23px 14px}.intro h1{font-size:24px}.mode{padding:10px 11px}.inputpanel,.draftpanel{padding:15px}.searchset{grid-template-columns:78px 1fr;gap:7px}.searchset .copy{grid-column:2;justify-self:start}.toolrow{flex-direction:column}.outhead{gap:10px}.row{grid-template-columns:1fr}}
+
+/* Refined brand, type scale and spacing */
+:root{--navy:#17283b;--navy2:#263d53;--ink:#263444;--muted:#77818d;--line:#e5e1db;--paper:#f5f3ef;--white:#fff;--copper:#94704f;--copper-bg:#f2ece5;--blue-bg:#eef1f4;--red:#a6222a;--shadow:0 7px 22px rgba(27,39,53,.045)}
+body{font-family:"Noto Sans SC","Source Han Sans SC","PingFang SC","Microsoft YaHei",sans-serif;font-size:14px;line-height:1.7;letter-spacing:.08px}
+.top{height:76px;background:#fff;color:var(--ink);padding:0 max(calc((100% - 1180px)/2),30px);border-bottom:1px solid #e8e4de}
+.brand{gap:12px}.hdl-logo{display:block;width:39px;height:39px;color:var(--red);flex:none}.branddivider{height:32px;width:1px;background:#e4e0da;margin:0 2px}.brandname{color:#9f2027;font-size:17px;font-weight:750;letter-spacing:1px}.brandline{color:#828992;font-size:10px;letter-spacing:1.2px;margin-top:2px}.topright{color:#697482;font-size:11px}.status{border-color:#ded6cc;color:#80694f;background:#faf8f4;letter-spacing:.3px}
+.page{max-width:1180px;padding:42px 30px 58px}.intro{margin-bottom:30px}.kicker{font-size:10px;letter-spacing:2.1px;color:#94704f}.intro h1{font-size:30px;line-height:1.35;letter-spacing:.2px;font-weight:650;color:#17283b;margin:8px 0 7px}.intro p{font-size:13px;line-height:1.8;color:#747f8b;letter-spacing:.1px}.modebar{gap:10px;margin-bottom:23px}.mode{font-size:13px;padding:12px 18px 14px;letter-spacing:.15px}.mode.active{font-weight:700}.layout{grid-template-columns:380px minmax(0,1fr);gap:20px}.panel{border-radius:10px;box-shadow:var(--shadow)}.inputpanel,.draftpanel{padding:22px}.paneltitle{font-size:14px;letter-spacing:.2px}.hint{font-size:11px;line-height:1.8;margin-bottom:15px}.labelrow{margin:17px 0 8px}.label{font-size:12px;letter-spacing:.1px}.textarea{font-size:12px;line-height:1.9;padding:14px 15px;border-color:#e1ded8;background:#fdfcfb}.textarea.short{min-height:170px}.input{font-size:12px;padding:10px 11px;background:#fdfcfb}.btnmain{padding:12px 15px;border-radius:6px;font-size:12px;letter-spacing:.25px}.micro{font-size:10px;line-height:1.7}.outhead h2{font-size:17px;letter-spacing:.15px;font-weight:650}.outhead p{font-size:11px;line-height:1.65}.block{padding:18px 20px}.blockhead{margin-bottom:12px}.blocktitle{font-size:12px;letter-spacing:.15px}.searchset{padding:12px 13px;grid-template-columns:106px 1fr auto}.setlabel,.sub{font-size:10px}.settext{font-size:12px;line-height:1.65;letter-spacing:.15px}.chip,.company{font-size:11px;padding:6px 10px}.outputhint{font-size:10px;line-height:1.7}.drafttitle{font-size:14px}.draftarea{font-size:12px;line-height:2;padding:17px 18px;background:#fdfcfb;border-color:#e1ded8}.iteration{margin-top:18px;padding-top:17px}.iteration label{font-size:12px}.iterrow textarea{font-size:11px;line-height:1.8;padding:11px 12px}.iterbtn{font-size:11px;letter-spacing:.1px}.note{font-size:10px;line-height:1.7;margin-top:25px}
+@media(max-width:900px){.top{padding:0 21px}.page{padding:30px 21px 46px}.layout{grid-template-columns:1fr}}
+@media(max-width:600px){.top{height:66px;padding:0 14px}.topright{font-size:10px}.brandname{font-size:15px}.hdl-logo{width:34px;height:34px}.page{padding:24px 14px 38px}.intro{margin-bottom:23px}.intro h1{font-size:25px}.mode{font-size:12px;padding:11px 12px 13px}.inputpanel,.draftpanel{padding:16px}.block{padding:15px}.searchset{grid-template-columns:82px 1fr}.searchset .copy{grid-column:2}.outhead h2{font-size:15px}}
+
+/* Sourcing requirements */
+.hidden{display:none!important}
+.target-fields{margin-top:16px;padding-top:1px;border-top:1px solid var(--line)}
+.target-fields .label{font-size:14px}.target-fields .input{font-size:14px;padding:11px 12px}
+.target-fields .quiet,.field-help{font-size:12px;color:#77818d}
+.field-help{line-height:1.7;margin:6px 0 0}
+#analysisResult:not(.hidden){display:flex;flex-direction:column;gap:12px}
+.scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0}
+.scope-grid>div{min-width:0;padding:12px 14px;background:var(--blue-bg);border-radius:6px}
+.scope-grid dt{font-size:12px;color:#667482;margin-bottom:5px}
+.scope-grid dd{font-size:14px;font-weight:600;color:var(--navy);margin:0;overflow-wrap:anywhere}
+.scope-note{font-size:12px;color:#77818d;line-height:1.7;margin:10px 0 0}
+.settext,.company{overflow-wrap:anywhere;min-width:0}
+@media(max-width:600px){.scope-grid{grid-template-columns:1fr;gap:8px}.blockhead{gap:10px;flex-wrap:wrap}}
+
+/* Unified brand and product identity */
+.page{padding-top:36px}
+.brand-intro{margin-bottom:24px}
+.identity-row{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.brand-lockup{display:flex;align-items:center;gap:23px;min-width:0}
+.brand-signature{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.brand-signature .hdl-logo{width:44px;height:44px}
+.brand-signature .brandname{font-size:21px;line-height:1.3;letter-spacing:1px;font-weight:700}
+.brand-divider{height:43px;width:1px;background:#d8d3cc;flex-shrink:0}
+.product-identity h1{font-size:30px;line-height:1.25;font-weight:650;letter-spacing:.4px;margin:0;color:var(--navy)}
+.product-identity .product-caption{margin:5px 0 0;font-size:13px;line-height:1.5;color:#707c89;letter-spacing:1px}
+.identity-meta{display:flex;align-items:center;gap:14px;color:#707c89;font-size:12px;white-space:nowrap}
+.brand-intro .intro-description{margin:19px 0 0;font-size:14px;line-height:1.8;color:#6d7987}
+@media(max-width:900px){.page{padding-top:28px}.identity-row{gap:18px}.brand-lockup{gap:18px}}
+@media(max-width:600px){
+  .page{padding-top:24px}
+  .brand-intro{margin-bottom:20px}
+  .identity-row{gap:15px}
+  .brand-lockup{gap:14px}
+  .brand-signature{gap:7px}
+  .brand-signature .hdl-logo{width:35px;height:35px}
+  .brand-signature .brandname{font-size:17px;letter-spacing:.5px}
+  .brand-divider{height:37px}
+  .product-identity h1{font-size:25px}
+  .product-identity .product-caption{font-size:12px;letter-spacing:.5px;margin-top:4px}
+  .identity-meta{gap:10px;font-size:12px}
+  .identity-meta .status{padding:3px 8px}
+  .brand-intro .intro-description{font-size:14px;margin-top:14px;line-height:1.8}
+}
+/* Editorial redesign: a focused workspace with a confident Haidilao palette. */
+:root{
+  --navy:#172536;--navy2:#25394d;--ink:#243244;--muted:#738091;
+  --line:#e7e3dd;--paper:#f3f1ed;--white:#fff;--copper:#a17b58;
+  --copper-bg:#f5efe8;--red:#a5222a;--shadow:0 12px 34px rgba(29,38,49,.07)
+}
+body{background:#f2f0ec;color:var(--ink);font-size:14px;line-height:1.65;letter-spacing:0}
+.page{max-width:1320px;padding:30px 34px 64px}
+.brand-intro{position:relative;overflow:hidden;margin:0 0 24px;padding:27px 32px 25px;border-radius:16px;background:linear-gradient(112deg,#162638 0%,#20334a 67%,#384052 100%);box-shadow:0 16px 36px rgba(22,38,56,.16)}
+.brand-intro:after{content:"";position:absolute;width:360px;height:360px;right:-105px;top:-215px;border:1px solid rgba(255,255,255,.11);border-radius:50%;box-shadow:0 0 0 38px rgba(255,255,255,.025),0 0 0 78px rgba(255,255,255,.02);pointer-events:none}
+.identity-row{position:relative;z-index:1;align-items:center}
+.brand-lockup{gap:18px}.brand-signature{gap:10px}.hdl-logo{width:38px;height:38px;color:#e5cdb2}
+.brandname{font-size:15px;color:#fff;letter-spacing:1.3px}.brand-divider{background:rgba(255,255,255,.23);height:38px;margin:0 3px}
+.product-identity h1{color:#fff;font-size:25px;font-weight:650;letter-spacing:.3px;line-height:1.25;margin:0}
+.product-caption{color:#c3ccd5;font-size:11px;letter-spacing:1px;margin:5px 0 0}
+.identity-meta{color:#bfc9d3;font-size:11px;gap:12px}.identity-meta .status{color:#e6d1ba;border-color:rgba(228,205,179,.35);background:rgba(255,255,255,.06);padding:5px 11px}
+.brand-intro .intro-description{position:relative;z-index:1;color:#d0d7df;font-size:13px;margin:17px 0 0;line-height:1.7}
+.modebar{display:inline-flex;gap:4px;margin:0 0 20px;padding:5px;border:1px solid #e4dfd7;border-radius:10px;background:#fff;box-shadow:0 3px 10px rgba(29,38,49,.035)}
+.mode{border-radius:7px;color:#707b88;padding:10px 17px;font-size:12px;transition:all .18s ease}
+.mode.active{color:#fff;background:var(--navy);font-weight:650;box-shadow:0 3px 8px rgba(23,37,54,.16)}
+.mode.active:after{display:none}.mode:not(.active):hover{background:#f7f5f2;color:var(--navy)}
+.layout{grid-template-columns:minmax(320px,390px) minmax(0,1fr);gap:20px;align-items:start}
+.panel{border:1px solid #e6e2dc;border-radius:12px;box-shadow:0 5px 20px rgba(29,38,49,.035)}
+.inputpanel,.draftpanel{padding:22px}
+.inputpanel{position:sticky;top:18px}
+.paneltitle,.drafttitle{font-size:15px;color:var(--navy);font-weight:700;letter-spacing:.1px}
+.hint{font-size:11px;color:#7e8995;line-height:1.7;margin:5px 0 17px}
+.labelrow{margin:17px 0 7px}.label{font-size:11px;color:#354457;font-weight:650}
+.quiet,.field-help,.micro,.iterationhint{font-size:10px;color:#8a949e}
+.textarea,.input,.draftarea,.iterrow textarea{border:1px solid #dedfdf;background:#fbfbfa;border-radius:8px;color:#29384a;transition:border-color .18s,box-shadow .18s,background .18s}
+.textarea{min-height:225px;padding:13px 14px;font-size:12px;line-height:1.8}
+.textarea.short{min-height:145px}.input{padding:10px 12px;font-size:12px}
+.textarea:focus,.input:focus,.draftarea:focus,.iterrow textarea:focus{border-color:#9d8064;box-shadow:0 0 0 3px rgba(161,123,88,.12);background:#fff}
+.field-help{margin:5px 0 0;line-height:1.55}
+.btnmain,.iterbtn{background:var(--navy);border-radius:8px;font-size:12px;transition:background .18s,transform .18s}
+.btnmain{padding:12px 14px;margin-top:17px}.btnmain:hover,.iterbtn:hover{background:#294158;transform:translateY(-1px)}
+.btnmain .star{color:#d9b999}
+.output{gap:12px}.outhead{align-items:center;padding:4px 2px 5px}
+.outhead h2{font-size:17px;letter-spacing:.1px}.outhead p{font-size:11px;margin-top:4px}
+.btnghost,.copy{background:#fff;border:1px solid #dedfdf;border-radius:7px;color:#526173;font-size:10px;padding:8px 11px;transition:all .16s}
+.btnghost:hover,.copy:hover{border-color:#b79c7d;color:#795d40;background:#fcfaf7}
+.empty{min-height:300px;padding:52px 28px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(145deg,#fff,#faf9f7)}
+.empty .emptyicon{height:54px;width:54px;border:1px solid #e3d8ca;background:#f8f4ef;color:#94704f;font-size:22px;margin-bottom:15px}
+.empty strong{font-size:13px;color:#304156}.empty p{font-size:11px;line-height:1.7;max-width:340px}
+.block{padding:17px 19px}.blockhead{margin-bottom:12px;gap:12px}.blocktitle{font-size:12px;color:#2b3c50}
+.scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0}
+.scope-grid>div{padding:12px 13px;border:1px solid #ece8e2;background:#faf9f7;border-radius:8px;min-width:0}
+.scope-grid dt{font-size:10px;color:#778391;margin-bottom:5px}.scope-grid dd{font-size:12px;color:#26384d;font-weight:650;margin:0;overflow-wrap:anywhere}
+.scope-note{font-size:10px;color:#818b95;margin:9px 1px 0}
+.searchline{gap:7px}.chip{background:#eef1f4;color:#354b63;border:1px solid #e5e9ed;border-radius:5px;padding:6px 9px;font-size:10px}
+.searchsets{gap:7px}.searchset{grid-template-columns:104px minmax(0,1fr) auto;gap:12px;padding:11px 12px;border:1px solid #e9e7e3;background:#fdfdfc;border-radius:8px}
+.setlabel{font-size:10px;color:#718091}.settext{font-size:11px;line-height:1.6;color:#293c52;overflow-wrap:anywhere}
+.companylist{gap:7px}.company{border:1px solid #e7e3dd;background:#faf9f7;color:#435266;border-radius:6px;padding:7px 10px;font-size:10px}.company:before{background:#9e7857}
+.outputhint{background:#f7f3ee;border-left:3px solid #aa8765;border-radius:0 6px 6px 0;padding:10px 12px;color:#6f6e6b;font-size:10px;line-height:1.65;margin-top:12px}
+.draftlabel{margin-bottom:12px}.version{background:#f5f1eb;border-radius:20px;color:#82694f;padding:4px 9px}
+.draftarea{min-height:440px;padding:17px;font-size:12px;line-height:1.9;background:#fcfcfb}
+.iteration{margin-top:16px;padding-top:16px}.iteration label{font-size:11px;color:#354457}
+.iterrow{align-items:stretch}.iterrow textarea{padding:11px 12px;font-size:11px;line-height:1.65}.iterbtn{padding:0 16px}
+.history{margin-top:12px}.historyitem{border-color:#e4e1db;background:#fff;border-radius:5px;padding:5px 8px;font-size:9px}
+.historyitem.current{border-color:#cdb9a2;color:#71583f;background:#faf6f1}
+.note{font-size:10px;color:#89919a;margin-top:24px}
+.toaster{border-radius:8px;padding:10px 15px;box-shadow:0 8px 22px rgba(23,37,54,.2)}
+.hidden{display:none!important}
+@media(max-width:980px){.page{padding:22px 22px 48px}.layout{grid-template-columns:minmax(270px,.82fr) minmax(0,1.18fr);gap:14px}.inputpanel,.draftpanel{padding:18px}.textarea{min-height:200px}}
+@media(max-width:760px){.page{padding:18px 15px 42px}.brand-intro{padding:21px 20px;border-radius:13px}.product-identity h1{font-size:21px}.brand-lockup{gap:12px}.identity-meta{gap:7px}.layout{grid-template-columns:1fr}.inputpanel{position:static}.textarea{min-height:180px}.textarea.short{min-height:125px}.draftarea{min-height:350px}.empty{min-height:235px}}
+@media(max-width:480px){.page{padding:13px 11px 34px}.brand-intro{padding:18px 16px;margin-bottom:16px}.hdl-logo{width:31px;height:31px}.brandname{font-size:13px}.brand-divider{height:32px}.product-identity h1{font-size:18px}.product-caption{font-size:9px}.identity-meta{font-size:9px}.identity-meta .status{padding:3px 7px}.brand-intro .intro-description{font-size:11px;margin-top:12px}.modebar{display:flex;width:100%;margin-bottom:14px}.mode{flex:1;padding:9px 6px;font-size:10px}.inputpanel,.draftpanel{padding:15px}.outhead{align-items:flex-start;flex-direction:column}.toolrow{flex-direction:row}.scope-grid{grid-template-columns:1fr}.searchset{grid-template-columns:1fr auto;gap:7px}.setlabel{grid-column:1/-1}.settext{font-size:10px}.searchset .copy{grid-column:2;grid-row:2;align-self:center}.iterrow{flex-direction:column}.iterbtn{padding:10px 12px}.block{padding:14px}}
+/* Keep the Haidilao signature in its classic red-on-white treatment. */
+.brand-signature{background:#fff;border-radius:8px;padding:6px 10px;gap:9px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.brand-signature .hdl-logo{color:#c51f2a}
+.brand-signature .brandname{color:#c51f2a;font-weight:750;letter-spacing:.8px}
+.auth-veil{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px;background:rgba(16,27,40,.66);backdrop-filter:blur(5px)}
+.auth-card{width:min(100%,390px);padding:28px;border:1px solid #e7e1d9;border-radius:15px;background:#fff;box-shadow:0 22px 70px rgba(11,20,30,.24)}
+.auth-card h2{margin:0;color:#172536;font-size:20px}.auth-card p{margin:8px 0 18px;color:#74808c;font-size:12px;line-height:1.7}
+.auth-card label{display:block;margin:0 0 7px;color:#39495b;font-size:11px;font-weight:650}
+.auth-card input{width:100%;padding:11px 12px;border:1px solid #dedfdf;border-radius:8px;outline:none}
+.auth-card input:focus{border-color:#9d8064;box-shadow:0 0 0 3px rgba(161,123,88,.12)}
+.auth-submit{width:100%;margin-top:12px;padding:11px;border:0;border-radius:8px;background:#172536;color:#fff;font-size:12px;font-weight:650}
+.auth-submit:disabled{opacity:.65;cursor:wait}.auth-error{min-height:18px;margin-top:8px;color:#a5222a;font-size:11px}.auth-foot{margin-top:5px;color:#9099a2;font-size:10px}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="intro brand-intro">
+  <div class="identity-row">
+    <div class="brand-lockup">
+      <div class="brand-signature"><svg class="hdl-logo" viewBox="0 0 42 42" role="img" aria-label="海底捞标志"><circle cx="21" cy="21" r="18" fill="none" stroke="currentColor" stroke-width="2.4"/><text x="8.6" y="27.4" font-family="Georgia,serif" font-size="18" font-style="italic" font-weight="700" fill="currentColor">Hi</text></svg><span class="brandname">海底捞</span></div>
+      <span class="brand-divider" aria-hidden="true"></span>
+      <div class="product-identity"><h1>JD 研创台</h1><p class="product-caption">岗位分析 · JD 生成</p></div>
+    </div>
+    <div class="identity-meta"><span>内部使用</span><span class="status">团队口令</span></div>
+  </div>
+  <p class="intro-description">解析岗位需求，明确寻访方向；从业务想法出发，共创合适的 JD。</p>
+</header>
+<nav class="modebar"><button class="mode active" data-pane="analysis">人才寻访策略</button><button class="mode" data-pane="creation">岗位需求共创</button></nav>
+<section class="pane active" id="analysis"><div class="layout"><div class="panel inputpanel"><div class="paneltitle">输入岗位 JD</div><p class="hint">粘贴招聘需求，明确目标行业与期望 Base 地，形成可复制的寻访方案。</p><div class="labelrow"><label class="label" for="jd">JD 内容</label><button class="tiny" id="loadJD">填入示例</button></div><textarea class="textarea" id="jd" placeholder="在这里粘贴完整 JD，或至少提供岗位名称、职责和任职要求……"></textarea><div class="target-fields">
+<div class="labelrow"><label class="label" for="industry">目标行业</label><span class="quiet">选填 · 可填写多个</span></div>
+<input class="input" id="industry" placeholder="如：连锁餐饮、零售、酒店" aria-describedby="industryHelp">
+<p class="field-help" id="industryHelp">希望从哪些行业寻找人选？可补充优先顺序。</p>
+<div class="labelrow"><label class="label" for="baseLocation">期望人选 Base 地</label><span class="quiet">选填</span></div>
+<input class="input" id="baseLocation" placeholder="如：上海、杭州；上海优先" aria-describedby="baseHelp">
+<p class="field-help" id="baseHelp">填写期望人选的常驻城市或地区；不限可填写“全国”。</p>
+</div><button class="btnmain" id="analyze"><span class="star">✦</span>生成寻访方案</button><p class="micro">分析结果重点给招聘同事使用，不生成冗长岗位解读。</p></div>
+<div class="output"><div class="outhead"><div><h2>可复制的寻访方案</h2><p id="analysisTitle">粘贴 JD 后生成 · 结果可直接复制</p></div><div class="toolrow"><button class="btnghost" id="copyAll">复制全部</button></div></div><div id="analysisEmpty" class="panel empty"><div class="emptyicon">⌕</div><strong>这里会生成可直接使用的搜索内容</strong><p>明确目标行业、期望 Base 地与岗位关键词，快速对齐找人方向。</p></div><div id="analysisResult" class="hidden">
+<div class="panel block"><div class="blockhead"><span class="blocktitle">人才来源与 Base 要求</span><button class="copy" data-copy="targetScope">复制条件</button></div><dl class="scope-grid" id="targetScope"><div><dt>目标行业</dt><dd id="scopeIndustry">未限定</dd></div><div><dt>期望人选 Base 地</dt><dd id="scopeBase">待明确</dd></div></dl><p class="scope-note">Base 地为期望条件；人选当前所在地及到岗意愿需另行确认。</p></div>
+<div class="panel block"><div class="blockhead"><span class="blocktitle">职位 / 相近岗位关键词</span><button class="copy" data-copy="roles">复制</button></div><div class="searchline" id="roles"></div></div>
+<div class="panel block"><div class="blockhead"><span class="blocktitle">寻访关键词组合</span><span class="sub">结合岗位与目标行业，逐组复制使用</span></div><div class="searchsets" id="searchsets"></div></div>
+<div class="panel block"><div class="blockhead"><span class="blocktitle">优先寻访公司方向</span><button class="copy" data-copy="companies">复制方向</button></div><div class="companylist" id="companies"></div><div class="outputhint" id="companyNote">根据目标行业整理人才来源方向，具体公司需进一步确认。</div></div>
+<div class="panel block"><div class="blockhead"><span class="blocktitle">简历筛选重点</span><button class="copy" data-copy="focus">复制</button></div><div class="searchline" id="focus"></div></div></div></div></div></section>
+<section class="pane" id="creation"><div class="layout"><div class="panel inputpanel"><div class="paneltitle">先把业务想法写下来</div><p class="hint">不需要整理成标准 JD。写业务目标、团队现状、希望解决的问题，想到什么写什么。</p><div class="labelrow"><label class="label" for="notes">业务零散信息</label><button class="tiny" id="loadNotes">填入示例</button></div><textarea class="textarea short" id="notes" placeholder="例如：我们现在最需要解决什么问题？希望这个人来了之后做成什么？"></textarea><div class="labelrow"><label class="label" for="context">其他背景（选填）</label><span class="quiet">级别、团队、地点、汇报对象等</span></div><textarea class="textarea short" id="context" placeholder="可以继续补充，没有也可以先开始"></textarea><button class="btnmain" id="create"><span class="star">✦</span>生成岗位说明书初稿</button><p class="micro">初稿出来后可以编辑正文，也可以在下方告诉模型怎么改。</p></div>
+<div class="panel draftpanel"><div class="draftlabel"><span class="drafttitle">岗位说明书草稿</span><span class="version" id="versionLabel">尚未生成</span></div><textarea class="draftarea" id="draft" placeholder="生成的 JD 会出现在这里。你可以直接编辑，或用下方输入框继续提出修改意见。"></textarea><div class="iteration"><label for="feedback">还想怎么调整？继续补充你的想法</label><div class="iterrow"><textarea id="feedback" placeholder="例如：职责少写一些，突出从0到1搭建；任职要求不要卡学历，增加餐饮一线经验"></textarea><button class="iterbtn" id="refine">按意见继续修改</button></div><p class="iterationhint">每轮修改后形成一个新版本；业务可以反复补充，满意后复制发布。</p><div class="history" id="history"><span class="historyitem current">等待第一版</span></div><div style="display:flex;justify-content:flex-end;margin-top:12px"><button class="btnghost" id="copyDraft">复制 JD 正文</button></div></div></div></div></section>
+<p class="note">分析结果由服务端调用 DeepSeek 生成；岗位输入、分析记录与 JD 版本保存在 Supabase。</p></main><div class="toaster" id="toast"></div>
+<div class="auth-veil" id="authGate"><div class="auth-card"><h2>进入 JD 研创台</h2><p>请输入团队访问口令。口令由管理员在 Supabase 中设置，关闭此浏览器标签后需要重新输入。</p><form id="authForm"><label for="appPasscode">团队口令</label><input id="appPasscode" type="password" autocomplete="current-password" required placeholder="输入团队口令"><button class="auth-submit" id="authSubmit" type="submit">验证并进入</button><div class="auth-error" id="authError" role="alert"></div></form><div class="auth-foot">如果暂未配置后端，请先完成部署步骤。</div></div></div>
+<script>
+const $ = id => document.getElementById(id);
+const SUPABASE_FUNCTION_URL = "https://dttouaioormlqmibfyuh.supabase.co/functions/v1/jd-api";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_mTgqt1VwlASfQN4Z6N-2Eg_dJu2FIu1";
+const PASSCODE_SESSION_KEY = "jd_analyzer_passcode";
+let versions = [];
+let analysisSnapshot = null;
+let analysisWorkspaceId = "";
+let creationWorkspaceId = "";
+let draftDirty = false;
+
+const exampleJD = "岗位：高级会员运营负责人\n岗位职责：负责会员体系及用户生命周期运营，提升会员活跃、复购与留存；制定会员分层运营策略，协同产品、品牌和门店团队推进落地；搭建会员运营指标体系并持续优化。\n任职要求：5年以上会员运营或用户运营经验；熟悉会员分层、权益设计、私域运营及数据分析；有高端餐饮、零售、酒店或消费品牌经验优先。";
+const exampleNotes = "我们希望找一个能把会员运营从活动执行升级到长期经营的人。现在会员规模不小，但复购和活跃还有提升空间。这个人要能带团队，也要能和产品、品牌、门店一起把策略落地。最好做过高端餐饮或相近消费行业，既懂数据，也愿意深入业务一线。";
+
+function toast(message) {
+  const node = $("toast");
+  node.textContent = message;
+  node.classList.add("show");
+  setTimeout(() => node.classList.remove("show"), 2200);
+}
+function showGate(message) {
+  $("authGate").classList.remove("hidden");
+  if (message) $("authError").textContent = message;
+}
+function configured() {
+  return !SUPABASE_FUNCTION_URL.includes("YOUR_PROJECT_REF") &&
+    !SUPABASE_PUBLISHABLE_KEY.includes("PASTE_YOUR");
+}
+async function invoke(action, payload = {}, passcodeOverride = "") {
+  if (!configured()) throw new Error("请先在页面代码顶部填写 Supabase 项目地址和 Publishable key");
+  const passcode = passcodeOverride || sessionStorage.getItem(PASSCODE_SESSION_KEY) || "";
+  const headers = {
+    "Content-Type": "application/json",
+    "apikey": SUPABASE_PUBLISHABLE_KEY
+  };
+  if (action !== "verify" && passcode) headers["x-app-passcode"] = passcode;
+  const response = await fetch(SUPABASE_FUNCTION_URL, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(Object.assign({ action }, payload, action === "verify" ? { passcode } : {}))
+  });
+  const result = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    if (response.status === 401 && action !== "verify") {
+      sessionStorage.removeItem(PASSCODE_SESSION_KEY);
+      showGate("口令已失效，请重新输入。");
+    }
+    throw new Error(result.error || "服务请求失败，请稍后重试");
+  }
+  return result;
+}
+function copy(value) {
+  if (!value) { toast("暂无可复制内容"); return; }
+  if (!navigator.clipboard) { toast("当前环境无法自动复制，请手动选择内容"); return; }
+  navigator.clipboard.writeText(value)
+    .then(() => toast("已复制，可粘贴使用"))
+    .catch(() => toast("复制失败，请手动选择内容"));
+}
+function renderTags(id, items, className) {
+  const parent = $(id);
+  parent.replaceChildren();
+  (items || []).forEach(value => {
+    const tag = document.createElement("span");
+    tag.className = className;
+    tag.textContent = value;
+    parent.appendChild(tag);
+  });
+}
+function scopeText() {
+  return "目标行业：" + analysisSnapshot.industry + "\n期望人选 Base 地：" + analysisSnapshot.base;
+}
+function renderAnalysis(data, workspaceId) {
+  analysisWorkspaceId = workspaceId || "";
+  if (analysisWorkspaceId) localStorage.setItem("jd_analysis_workspace_id", analysisWorkspaceId);
+  const result = data || {};
+  const industry = (result.industry_targets || []).join("、") || "未限定（可补充目标行业）";
+  const base = (result.base_targets || []).join("、") || "待明确（可补充期望城市）";
+  const searchSets = (result.search_combinations || []).map(item => [item.label, item.text]);
+  analysisSnapshot = {
+    industry,
+    base,
+    roles: result.position_keywords || [],
+    searchSets,
+    companies: result.company_directions || [],
+    focus: result.screening_points || []
+  };
+  $("analysisTitle").textContent = (result.title || "岗位") + " · 已生成并保存";
+  $("scopeIndustry").textContent = industry;
+  $("scopeBase").textContent = base;
+  renderTags("roles", analysisSnapshot.roles, "chip");
+  renderTags("focus", analysisSnapshot.focus, "chip");
+  renderTags("companies", analysisSnapshot.companies, "company");
+  $("searchsets").replaceChildren();
+  searchSets.forEach(pair => {
+    const row = document.createElement("div");
+    row.className = "searchset";
+    const label = document.createElement("span");
+    label.className = "setlabel";
+    label.textContent = pair[0];
+    const value = document.createElement("span");
+    value.className = "settext";
+    value.textContent = pair[1];
+    const button = document.createElement("button");
+    button.className = "copy";
+    button.textContent = "复制";
+    button.onclick = () => copy(pair[1]);
+    row.append(label, value, button);
+    $("searchsets").appendChild(row);
+  });
+  $("companyNote").textContent = result.company_note || "公司方向依据岗位与目标行业整理；具体目标公司请结合业务要求确认。";
+  $("analysisEmpty").classList.add("hidden");
+  $("analysisResult").classList.remove("hidden");
+}
+function renderHistory() {
+  const parent = $("history");
+  parent.replaceChildren();
+  if (!versions.length) {
+    const empty = document.createElement("span");
+    empty.className = "historyitem current";
+    empty.textContent = "等待第一版";
+    parent.appendChild(empty);
+    return;
+  }
+  versions.forEach((version, index) => {
+    const item = document.createElement("button");
+    item.type = "button";
+    item.className = "historyitem" + (index === versions.length - 1 ? " current" : "");
+    item.textContent = "V" + version.version_no + " " + version.version_label;
+    item.title = version.created_at || "";
+    item.onclick = () => {
+      $("draft").value = version.jd_text;
+      $("versionLabel").textContent = "V" + version.version_no + " · " + version.version_label;
+      draftDirty = false;
+      toast("已打开该版本");
+    };
+    parent.appendChild(item);
+  });
+}
+function setCurrentVersion(version) {
+  if (!version) return;
+  versions.push(version);
+  $("draft").value = version.jd_text;
+  $("versionLabel").textContent = "V" + version.version_no + " · " + version.version_label;
+  draftDirty = false;
+  renderHistory();
+}
+async function loadCurrentWorkspace() {
+  creationWorkspaceId = localStorage.getItem("jd_creation_workspace_id") || "";
+  if (!creationWorkspaceId) return;
+  try {
+    const data = await invoke("load_workspace", { workspace_id: creationWorkspaceId });
+    if (!data.workspace || !data.versions || !data.versions.length) return;
+    versions = data.versions;
+    const latest = versions[versions.length - 1];
+    $("draft").value = latest.jd_text;
+    $("versionLabel").textContent = "V" + latest.version_no + " · " + latest.version_label;
+    if (!$("notes").value) $("notes").value = data.workspace.business_notes || "";
+    if (!$("context").value) $("context").value = data.workspace.business_context || "";
+    renderHistory();
+  } catch (error) {
+    localStorage.removeItem("jd_creation_workspace_id");
+    creationWorkspaceId = "";
+  }
+}
+async function withBusy(buttonId, busyLabel, work) {
+  const button = $(buttonId);
+  const original = button.innerHTML;
+  button.disabled = true;
+  button.textContent = busyLabel;
+  try { await work(); }
+  catch (error) { toast(error.message || "操作失败"); }
+  finally { button.disabled = false; button.innerHTML = original; }
+}
+
+document.querySelectorAll(".mode").forEach(button => {
+  button.onclick = () => {
+    document.querySelectorAll(".mode").forEach(item => item.classList.toggle("active", item === button));
+    document.querySelectorAll(".pane").forEach(pane => pane.classList.toggle("active", pane.id === button.dataset.pane));
+  };
+});
+$("loadJD").onclick = () => { $("jd").value = exampleJD; $("jd").dispatchEvent(new Event("input")); toast("已填入示例 JD"); };
+$("loadNotes").onclick = () => {
+  $("notes").value = exampleNotes;
+  $("context").value = "岗位级别：资深经理或总监；团队约 6 人；地点：上海；核心目标：提升会员复购与活跃。";
+  toast("已填入业务信息示例");
+};
+
+$("authForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  const passcode = $("appPasscode").value.trim();
+  if (!configured()) { $("authError").textContent = "请先替换页面代码顶部的 Supabase 配置项。"; return; }
+  $("authSubmit").disabled = true;
+  $("authSubmit").textContent = "正在验证…";
+  $("authError").textContent = "";
+  try {
+    await invoke("verify", {}, passcode);
+    sessionStorage.setItem(PASSCODE_SESSION_KEY, passcode);
+    $("authGate").classList.add("hidden");
+    $("appPasscode").value = "";
+    await loadCurrentWorkspace();
+  } catch (error) {
+    $("authError").textContent = error.message || "口令验证失败";
+  } finally {
+    $("authSubmit").disabled = false;
+    $("authSubmit").textContent = "验证并进入";
+  }
+});
+
+$("analyze").onclick = () => withBusy("analyze", "正在分析…", async () => {
+  const jd = $("jd").value.trim();
+  if (!jd) throw new Error("请先粘贴一份 JD");
+  const data = await invoke("analyze", {
+    jd,
+    industry: $("industry").value.trim(),
+    base: $("baseLocation").value.trim()
+  });
+  renderAnalysis(data.result, data.workspace_id);
+  toast("寻访方案已生成并保存");
+});
+document.querySelectorAll("[data-copy]").forEach(button => {
+  button.onclick = () => {
+    if (!analysisSnapshot) { toast("请先生成寻访方案"); return; }
+    const id = button.dataset.copy;
+    if (id === "targetScope") return copy(scopeText());
+    const values = analysisSnapshot[id] || [];
+    copy(values.join(id === "companies" ? "\n" : "、"));
+  };
+});
+$("copyAll").onclick = () => {
+  if (!analysisSnapshot) { toast("请先生成寻访方案"); return; }
+  const result = analysisSnapshot;
+  copy([
+    scopeText(),
+    "职位关键词：" + result.roles.join("、"),
+    "搜索组合：\n" + result.searchSets.map(pair => pair[0] + "：" + pair[1]).join("\n"),
+    "优先寻访公司方向：" + result.companies.join("；"),
+    "筛选重点：" + result.focus.join("、"),
+    "Base 核实：确认人选当前所在地及在期望 Base 地工作的意愿。"
+  ].join("\n\n"));
+};
+["jd", "industry", "baseLocation"].forEach(id => $(id).addEventListener("input", () => {
+  if (analysisSnapshot) $("analysisTitle").textContent = "输入已调整，请重新生成以更新寻访方案";
+}));
+
+$("create").onclick = () => withBusy("create", "正在创作…", async () => {
+  const notes = $("notes").value.trim();
+  const context = $("context").value.trim();
+  if (!notes) throw new Error("先写下业务想法，再生成 JD 初稿");
+  const data = await invoke("create_draft", { notes, context });
+  creationWorkspaceId = data.workspace_id;
+  localStorage.setItem("jd_creation_workspace_id", creationWorkspaceId);
+  versions = [];
+  setCurrentVersion(data.version);
+  toast("JD 初稿已生成并保存");
+});
+$("refine").onclick = () => withBusy("refine", "正在修改…", async () => {
+  const feedback = $("feedback").value.trim();
+  const current = $("draft").value.trim();
+  if (!creationWorkspaceId || !current) throw new Error("请先生成一版 JD");
+  if (!feedback) throw new Error("请先写下希望调整的内容");
+  const data = await invoke("refine_draft", {
+    workspace_id: creationWorkspaceId,
+    current_text: current,
+    feedback,
+    notes: $("notes").value.trim(),
+    context: $("context").value.trim()
+  });
+  setCurrentVersion(data.version);
+  $("feedback").value = "";
+  toast("修改稿已生成，新版本已保存");
+});
+$("draft").addEventListener("input", () => { draftDirty = true; });
+$("draft").addEventListener("blur", async () => {
+  if (!draftDirty || !creationWorkspaceId || !$("draft").value.trim()) return;
+  draftDirty = false;
+  try {
+    const data = await invoke("save_manual_draft", {
+      workspace_id: creationWorkspaceId,
+      jd_text: $("draft").value.trim(),
+      notes: $("notes").value.trim(),
+      context: $("context").value.trim()
+    });
+    if (data.version && !data.unchanged) setCurrentVersion(data.version);
+    else toast("手工修改已保存");
+  } catch (error) { draftDirty = true; toast(error.message || "保存失败"); }
+});
+$("copyDraft").onclick = () => copy($("draft").value.trim());
+
+const savedPasscode = sessionStorage.getItem(PASSCODE_SESSION_KEY);
+if (savedPasscode) {
+  invoke("verify", {}, savedPasscode).then(() => {
+    $("authGate").classList.add("hidden");
+    loadCurrentWorkspace();
+  }).catch(() => { sessionStorage.removeItem(PASSCODE_SESSION_KEY); showGate(); });
+}
+
+</script></body></html>
