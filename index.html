@@ -135,6 +135,13 @@ body{background:#f2f0ec;color:var(--ink);font-size:14px;line-height:1.65;letter-
 .no-evidence{border:1px dashed #d8d3cb;border-radius:8px;padding:14px;color:#7b838b;background:#faf9f7;font-size:10px;line-height:1.7}
 .extra-details{padding:14px 17px}.extra-details summary{cursor:pointer;color:#526173;font-size:11px;font-weight:650}
 .extra-details .searchline{margin-top:11px}
+/* Primary workspace navigation */
+.modebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;padding:0;gap:12px;background:none;border:0;box-shadow:none;margin:0 0 22px}
+.modebar .mode{display:flex;align-items:center;justify-content:flex-start;gap:14px;min-height:66px;padding:14px 20px;text-align:left;font-size:clamp(15px,1.6vw,19px);font-weight:650;color:#435266;background:#fff;border:1px solid #d7dce1;border-radius:10px}
+.modebar .mode svg{width:24px;height:24px;flex:none;stroke:currentColor;fill:none;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.modebar .mode.active{background:#192b40;color:white;border-color:#192b40;box-shadow:inset 5px 0 #ce3640,0 4px 14px #192b401d}
+.modebar .mode:focus-visible{outline:3px solid #627d9c;outline-offset:3px}
+@media(max-width:500px){.modebar{gap:8px}.modebar .mode{min-height:56px;gap:8px;padding:10px 12px}.modebar .mode svg{width:19px;height:19px}}
 </style>
 </head>
 <body>
@@ -149,7 +156,7 @@ body{background:#f2f0ec;color:var(--ink);font-size:14px;line-height:1.65;letter-
   </div>
   <p class="intro-description">解析岗位需求，明确寻访方向；从业务想法出发，共创合适的 JD。</p>
 </header>
-<nav class="modebar"><button class="mode active" data-pane="analysis">人才寻访策略</button><button class="mode" data-pane="creation">岗位需求共创</button></nav>
+<nav class="modebar"><button class="mode active" data-pane="analysis" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg>人才寻访策略</button><button class="mode" data-pane="creation" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5H5v14h14v-7M11 14l1-4 6-6 3 3-6 6z"/></svg>岗位需求共创</button></nav>
 <section class="pane active" id="analysis"><div class="layout"><div class="panel inputpanel"><div class="paneltitle">输入岗位 JD</div><p class="hint">粘贴招聘需求，明确目标行业与期望 Base 地，形成可复制的寻访方案。</p><div class="labelrow"><label class="label" for="jd">JD 内容</label><button class="tiny" id="loadJD">填入示例</button></div><textarea class="textarea" id="jd" placeholder="在这里粘贴完整 JD，或至少提供岗位名称、职责和任职要求……"></textarea><div class="target-fields">
 <div class="labelrow"><label class="label" for="industry">目标行业</label><span class="quiet">选填 · 可填写多个</span></div>
 <input class="input" id="industry" placeholder="如：连锁餐饮、零售、酒店" aria-describedby="industryHelp">
@@ -161,7 +168,7 @@ body{background:#f2f0ec;color:var(--ink);font-size:14px;line-height:1.65;letter-
 <div class="output"><div class="outhead"><div><h2>可复制的寻访方案</h2><p id="analysisTitle">粘贴 JD 后生成 · 结果可直接复制</p></div><div class="toolrow"><button class="btnghost" id="copyAll">复制全部</button></div></div><div id="analysisEmpty" class="panel empty"><div class="emptyicon">⌕</div><strong>这里会生成可直接使用的搜索内容</strong><p>明确目标行业、期望 Base 地与岗位关键词，快速对齐找人方向。</p></div><div id="analysisResult" class="hidden">
 <div class="panel block"><div class="blockhead"><span class="blocktitle">人才来源与 Base 要求</span><button class="copy" data-copy="targetScope">复制条件</button></div><dl class="scope-grid" id="targetScope"><div><dt>目标行业</dt><dd id="scopeIndustry">未限定</dd></div><div><dt>期望人选 Base 地</dt><dd id="scopeBase">待明确</dd></div></dl><p class="scope-note">Base 地为期望条件；人选当前所在地及到岗意愿需另行确认。</p></div>
 <div class="panel block"><div class="blockhead"><span class="blocktitle">可直接使用的寻访关键词</span><button class="copy" data-copy="roles">复制岗位词</button></div><div class="searchline" id="roles"></div><div class="divider"></div><div class="searchsets" id="searchsets"></div></div>
-<div class="panel block"><div class="blockhead"><span class="blocktitle">目标城市相关公司</span><button class="copy" data-copy="companies">复制公司名</button></div><div class="companylist" id="companies"></div></div>
+<div class="panel block"><div class="blockhead"><span class="blocktitle">目标公司寻访优先级</span><button class="copy" data-copy="companies">复制公司名</button></div><div class="companylist" id="companies"></div></div>
 <details class="panel extra-details"><summary>展开补充筛选点</summary><div class="searchline" id="focus"></div></details></div></div></div></section>
 <section class="pane" id="creation"><div class="layout"><div class="panel inputpanel"><div class="paneltitle">先把业务想法写下来</div><p class="hint">不需要整理成标准 JD。写业务目标、团队现状、希望解决的问题，想到什么写什么。</p><div class="labelrow"><label class="label" for="notes">业务零散信息</label><button class="tiny" id="loadNotes">填入示例</button></div><textarea class="textarea short" id="notes" placeholder="例如：我们现在最需要解决什么问题？希望这个人来了之后做成什么？"></textarea><div class="labelrow"><label class="label" for="context">其他背景（选填）</label><span class="quiet">级别、团队、地点、汇报对象等</span></div><textarea class="textarea short" id="context" placeholder="可以继续补充，没有也可以先开始"></textarea><button class="btnmain" id="create"><span class="star">✦</span>生成岗位说明书初稿</button><p class="micro">初稿出来后可以编辑正文，也可以在下方告诉模型怎么改。</p></div>
 <div class="panel draftpanel"><div class="draftlabel"><span class="drafttitle">岗位说明书草稿</span><span class="version" id="versionLabel">尚未生成</span></div><textarea class="draftarea" id="draft" placeholder="生成的 JD 会出现在这里。你可以直接编辑，或用下方输入框继续提出修改意见。"></textarea><div class="iteration"><label for="feedback">还想怎么调整？继续补充你的想法</label><div class="iterrow"><textarea id="feedback" placeholder="例如：职责少写一些，突出从0到1搭建；任职要求不要卡学历，增加餐饮一线经验"></textarea><button class="iterbtn" id="refine">按意见继续修改</button></div><p class="iterationhint">每轮修改后形成一个新版本；业务可以反复补充，满意后复制发布。</p><div class="history" id="history"><span class="historyitem current">等待第一版</span></div><div style="display:flex;justify-content:flex-end;margin-top:12px"><button class="btnghost" id="copyDraft">复制 JD 正文</button></div></div></div></div></section>
@@ -225,12 +232,17 @@ function renderTags(id, items, className) {
 }
 function groupCompanyNames(items) {
   const groups = new Map();
-  for (const item of items) {
-    const city = item?.city?.trim();
-    const name = item?.company?.trim();
-    if (!city || !name) continue;
-    if (!groups.has(city)) groups.set(city, new Set());
-    groups.get(city).add(name);
+  const tiers = ["优先寻访", "同业拓展", "跨业补充"];
+  for (const tier of [...tiers, "待分层"]) {
+    for (const item of items) {
+      const city = item?.city?.trim();
+      const name = item?.company?.trim();
+      const level = tiers.includes(item?.relationship) ? item.relationship : "待分层";
+      if (!city || !name || level !== tier) continue;
+      const label = city + " · " + level;
+      if (!groups.has(label)) groups.set(label, new Set());
+      groups.get(label).add(name);
+    }
   }
   return groups;
 }
@@ -358,7 +370,7 @@ async function withBusy(buttonId, busyLabel, work) {
 
 document.querySelectorAll(".mode").forEach(button => {
   button.onclick = () => {
-    document.querySelectorAll(".mode").forEach(item => item.classList.toggle("active", item === button));
+    document.querySelectorAll(".mode").forEach(item => { item.classList.toggle("active", item === button); item.setAttribute("aria-pressed", String(item === button)); });
     document.querySelectorAll(".pane").forEach(pane => pane.classList.toggle("active", pane.id === button.dataset.pane));
   };
 });
@@ -396,7 +408,7 @@ $("copyAll").onclick = () => {
     scopeText(),
     "职位关键词：" + result.roles.join("、"),
     "搜索组合：\n" + result.searchSets.map(pair => pair[0] + "：" + pair[1]).join("\n"),
-    "目标城市相关公司：" + ([...result.companyGroups].map(([city, names]) => city + "：" + [...names].join("、")).join("\n") || "暂无可确认的公司"),
+    "目标公司寻访优先级：" + ([...result.companyGroups].map(([city, names]) => city + "：" + [...names].join("、")).join("\n") || "暂无可确认的公司"),
     "筛选重点：" + result.focus.join("、"),
     "Base 核实：确认人选当前所在地及在期望 Base 地工作的意愿。"
   ].join("\n\n"));
