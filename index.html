@@ -131,14 +131,7 @@ body{background:#f2f0ec;color:var(--ink);font-size:14px;line-height:1.65;letter-
 .brand-signature .hdl-logo{color:#c51f2a}
 .brand-signature .brandname{color:#c51f2a;font-weight:750;letter-spacing:.8px}
 .companylist{display:grid;gap:9px}
-.company-evidence{border:1px solid #e8e4de;background:#fcfbf9;border-radius:9px;padding:12px 14px}
-.company-evidence-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.company-evidence-name{font-size:12px;color:#26384d;font-weight:700}
-.company-evidence-tag{font-size:9px;color:#795f45;background:#f4eee7;border-radius:12px;padding:3px 8px;white-space:nowrap}
-.company-evidence-text{font-size:10px;line-height:1.65;color:#586574;margin:8px 0 7px}
-.company-source{font-size:10px;color:#536e89;text-decoration:none;overflow-wrap:anywhere}
-.company-source:hover{text-decoration:underline;color:#294a69}
-.company-source-meta{font-size:9px;color:#929aa2;margin-left:7px}
+.city-companies{display:flex;gap:10px;align-items:baseline}.city-companies strong{flex:none;color:#26384d}.city-companies span{line-height:1.8}
 .no-evidence{border:1px dashed #d8d3cb;border-radius:8px;padding:14px;color:#7b838b;background:#faf9f7;font-size:10px;line-height:1.7}
 .extra-details{padding:14px 17px}.extra-details summary{cursor:pointer;color:#526173;font-size:11px;font-weight:650}
 .extra-details .searchline{margin-top:11px}
@@ -168,7 +161,7 @@ body{background:#f2f0ec;color:var(--ink);font-size:14px;line-height:1.65;letter-
 <div class="output"><div class="outhead"><div><h2>可复制的寻访方案</h2><p id="analysisTitle">粘贴 JD 后生成 · 结果可直接复制</p></div><div class="toolrow"><button class="btnghost" id="copyAll">复制全部</button></div></div><div id="analysisEmpty" class="panel empty"><div class="emptyicon">⌕</div><strong>这里会生成可直接使用的搜索内容</strong><p>明确目标行业、期望 Base 地与岗位关键词，快速对齐找人方向。</p></div><div id="analysisResult" class="hidden">
 <div class="panel block"><div class="blockhead"><span class="blocktitle">人才来源与 Base 要求</span><button class="copy" data-copy="targetScope">复制条件</button></div><dl class="scope-grid" id="targetScope"><div><dt>目标行业</dt><dd id="scopeIndustry">未限定</dd></div><div><dt>期望人选 Base 地</dt><dd id="scopeBase">待明确</dd></div></dl><p class="scope-note">Base 地为期望条件；人选当前所在地及到岗意愿需另行确认。</p></div>
 <div class="panel block"><div class="blockhead"><span class="blocktitle">可直接使用的寻访关键词</span><button class="copy" data-copy="roles">复制岗位词</button></div><div class="searchline" id="roles"></div><div class="divider"></div><div class="searchsets" id="searchsets"></div></div>
-<div class="panel block"><div class="blockhead"><span class="blocktitle">目标城市：有公开依据的竞对公司</span><button class="copy" data-copy="companies">复制公司名</button></div><div class="companylist" id="companies"></div><div class="outputhint" id="companyNote">仅展示能找到城市业务或招聘依据的公司，并附可查看的来源。</div></div>
+<div class="panel block"><div class="blockhead"><span class="blocktitle">目标城市相关公司</span><button class="copy" data-copy="companies">复制公司名</button></div><div class="companylist" id="companies"></div></div>
 <details class="panel extra-details"><summary>展开补充筛选点</summary><div class="searchline" id="focus"></div></details></div></div></div></section>
 <section class="pane" id="creation"><div class="layout"><div class="panel inputpanel"><div class="paneltitle">先把业务想法写下来</div><p class="hint">不需要整理成标准 JD。写业务目标、团队现状、希望解决的问题，想到什么写什么。</p><div class="labelrow"><label class="label" for="notes">业务零散信息</label><button class="tiny" id="loadNotes">填入示例</button></div><textarea class="textarea short" id="notes" placeholder="例如：我们现在最需要解决什么问题？希望这个人来了之后做成什么？"></textarea><div class="labelrow"><label class="label" for="context">其他背景（选填）</label><span class="quiet">级别、团队、地点、汇报对象等</span></div><textarea class="textarea short" id="context" placeholder="可以继续补充，没有也可以先开始"></textarea><button class="btnmain" id="create"><span class="star">✦</span>生成岗位说明书初稿</button><p class="micro">初稿出来后可以编辑正文，也可以在下方告诉模型怎么改。</p></div>
 <div class="panel draftpanel"><div class="draftlabel"><span class="drafttitle">岗位说明书草稿</span><span class="version" id="versionLabel">尚未生成</span></div><textarea class="draftarea" id="draft" placeholder="生成的 JD 会出现在这里。你可以直接编辑，或用下方输入框继续提出修改意见。"></textarea><div class="iteration"><label for="feedback">还想怎么调整？继续补充你的想法</label><div class="iterrow"><textarea id="feedback" placeholder="例如：职责少写一些，突出从0到1搭建；任职要求不要卡学历，增加餐饮一线经验"></textarea><button class="iterbtn" id="refine">按意见继续修改</button></div><p class="iterationhint">每轮修改后形成一个新版本；业务可以反复补充，满意后复制发布。</p><div class="history" id="history"><span class="historyitem current">等待第一版</span></div><div style="display:flex;justify-content:flex-end;margin-top:12px"><button class="btnghost" id="copyDraft">复制 JD 正文</button></div></div></div></div></section>
@@ -230,43 +223,31 @@ function renderTags(id, items, className) {
     parent.appendChild(tag);
   });
 }
-function renderCompanyEvidence(items) {
+function groupCompanyNames(items) {
+  const groups = new Map();
+  for (const item of items) {
+    const city = item?.city?.trim();
+    const name = item?.company?.trim();
+    if (!city || !name) continue;
+    if (!groups.has(city)) groups.set(city, new Set());
+    groups.get(city).add(name);
+  }
+  return groups;
+}
+function renderCompanyNames(groups) {
   const parent = $("companies");
   parent.replaceChildren();
-  if (!items || !items.length) {
-    const empty = document.createElement("div");
-    empty.className = "no-evidence";
-    empty.textContent = "暂未找到足以证明候选公司在目标城市有业务或招聘的公开来源。为避免误导，这里不列未核实公司。可调整行业或城市后再查。";
-    parent.appendChild(empty);
-    return;
+  for (const [city, names] of groups) {
+    const row = document.createElement("div");
+    row.className = "city-companies";
+    const label = document.createElement("strong");
+    label.textContent = city;
+    const list = document.createElement("span");
+    list.textContent = [...names].join("、");
+    row.append(label, list);
+    parent.appendChild(row);
   }
-  items.forEach(item => {
-    const card = document.createElement("article");
-    card.className = "company-evidence";
-    const top = document.createElement("div");
-    top.className = "company-evidence-top";
-    const name = document.createElement("span");
-    name.className = "company-evidence-name";
-    name.textContent = item.company;
-    const tag = document.createElement("span");
-    tag.className = "company-evidence-tag";
-    tag.textContent = [item.city, item.relationship].filter(Boolean).join(" · ");
-    top.append(name, tag);
-    const evidence = document.createElement("p");
-    evidence.className = "company-evidence-text";
-    evidence.textContent = item.evidence || "公开来源提及该公司与目标城市，点击查看原文核对。";
-    const source = document.createElement("a");
-    source.className = "company-source";
-    source.href = item.source_url;
-    source.target = "_blank";
-    source.rel = "noopener noreferrer";
-    source.textContent = item.source_title || item.source_site || "查看公开来源";
-    const meta = document.createElement("span");
-    meta.className = "company-source-meta";
-    meta.textContent = [item.source_site, item.source_date ? item.source_date.slice(0, 10) : ""].filter(Boolean).join(" · ");
-    card.append(top, evidence, source, meta);
-    parent.appendChild(card);
-  });
+  if (!groups.size) parent.textContent = "暂无可确认的公司";
 }
 function scopeText() {
   return "目标行业：" + analysisSnapshot.industry + "\n期望人选 Base 地：" + analysisSnapshot.base;
@@ -278,14 +259,14 @@ function renderAnalysis(data, workspaceId) {
   const industry = (result.industry_targets || []).join("、") || "未限定（可补充目标行业）";
   const base = (result.base_targets || []).join("、") || "待明确（可补充期望城市）";
   const searchSets = (result.search_combinations || []).map(item => [item.label, item.text]);
-  const companyEvidence = result.company_evidence || [];
+  const companyGroups = groupCompanyNames(result.company_evidence || []);
   analysisSnapshot = {
     industry,
     base,
     roles: result.position_keywords || [],
     searchSets,
-    companies: companyEvidence.map(item => item.company),
-    companyEvidence,
+    companies: [...new Set([...companyGroups.values()].flatMap(names => [...names]))],
+    companyGroups,
     focus: result.screening_points || []
   };
   $("analysisTitle").textContent = (result.title || "岗位") + " · 已生成并保存";
@@ -293,7 +274,7 @@ function renderAnalysis(data, workspaceId) {
   $("scopeBase").textContent = base;
   renderTags("roles", analysisSnapshot.roles, "chip");
   renderTags("focus", analysisSnapshot.focus, "chip");
-  renderCompanyEvidence(companyEvidence);
+  renderCompanyNames(companyGroups);
   $("searchsets").replaceChildren();
   searchSets.forEach(pair => {
     const row = document.createElement("div");
@@ -311,7 +292,6 @@ function renderAnalysis(data, workspaceId) {
     row.append(label, value, button);
     $("searchsets").appendChild(row);
   });
-  $("companyNote").textContent = result.company_note || "公司来源用于初步寻访参考，点击原文核实城市和业务信息。";
   $("analysisEmpty").classList.add("hidden");
   $("analysisResult").classList.remove("hidden");
 }
@@ -416,7 +396,7 @@ $("copyAll").onclick = () => {
     scopeText(),
     "职位关键词：" + result.roles.join("、"),
     "搜索组合：\n" + result.searchSets.map(pair => pair[0] + "：" + pair[1]).join("\n"),
-    "目标城市竞对公司及依据：\n" + result.companyEvidence.map(item => item.company + "（" + item.city + "）｜" + item.evidence + "｜" + item.source_url).join("\n"),
+    "目标城市相关公司：" + ([...result.companyGroups].map(([city, names]) => city + "：" + [...names].join("、")).join("\n") || "暂无可确认的公司"),
     "筛选重点：" + result.focus.join("、"),
     "Base 核实：确认人选当前所在地及在期望 Base 地工作的意愿。"
   ].join("\n\n"));
