@@ -135,13 +135,54 @@ body{background:#f2f0ec;color:var(--ink);font-size:14px;line-height:1.65;letter-
 .no-evidence{border:1px dashed #d8d3cb;border-radius:8px;padding:14px;color:#7b838b;background:#faf9f7;font-size:10px;line-height:1.7}
 .extra-details{padding:14px 17px}.extra-details summary{cursor:pointer;color:#526173;font-size:11px;font-weight:650}
 .extra-details .searchline{margin-top:11px}
-/* Primary workspace navigation */
-.modebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;padding:0;gap:12px;background:none;border:0;box-shadow:none;margin:0 0 22px}
-.modebar .mode{display:flex;align-items:center;justify-content:flex-start;gap:14px;min-height:66px;padding:14px 20px;text-align:left;font-size:clamp(15px,1.6vw,19px);font-weight:650;color:#435266;background:#fff;border:1px solid #d7dce1;border-radius:10px}
-.modebar .mode svg{width:24px;height:24px;flex:none;stroke:currentColor;fill:none;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
-.modebar .mode.active{background:#192b40;color:white;border-color:#192b40;box-shadow:inset 5px 0 #ce3640,0 4px 14px #192b401d}
-.modebar .mode:focus-visible{outline:3px solid #627d9c;outline-offset:3px}
-@media(max-width:500px){.modebar{gap:8px}.modebar .mode{min-height:56px;gap:8px;padding:10px 12px}.modebar .mode svg{width:19px;height:19px}}
+/* Paired workspace switch */
+.modebar {
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: max-content;
+  max-width: 100%;
+  gap: 2px;
+  margin: 0 0 16px;
+  padding: 3px;
+  background: #e8e6e2;
+  border: 1px solid #dbd9d5;
+  border-radius: 24px;
+  box-shadow: none;
+}
+.modebar .mode {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 32px;
+  padding: 5px 15px;
+  border: 0;
+  border-radius: 20px;
+  background: transparent;
+  color: #59616b;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: .02em;
+  white-space: nowrap;
+  transition: background-color .15s, color .15s;
+}
+.modebar .mode svg {
+  width: 15px; height: 15px; fill: none; stroke: currentColor;
+  stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round;
+}
+.modebar .mode.active {
+  background: #fff;
+  color: #253348;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(29,36,46,.12);
+}
+.modebar .mode.active svg { color: #a52f39; }
+.modebar .mode.active::after { display: none; }
+.modebar .mode:not(.active):hover { background: #efeeeb; color: #344253; }
+.modebar .mode:focus-visible { outline: 2px solid #566f8a; outline-offset: 1px; }
+@media (pointer: coarse) { .modebar .mode { min-height: 44px; } }
 </style>
 </head>
 <body>
@@ -156,7 +197,7 @@ body{background:#f2f0ec;color:var(--ink);font-size:14px;line-height:1.65;letter-
   </div>
   <p class="intro-description">解析岗位需求，明确寻访方向；从业务想法出发，共创合适的 JD。</p>
 </header>
-<nav class="modebar"><button class="mode active" data-pane="analysis" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg>人才寻访策略</button><button class="mode" data-pane="creation" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5H5v14h14v-7M11 14l1-4 6-6 3 3-6 6z"/></svg>岗位需求共创</button></nav>
+<nav class="modebar" aria-label="选择工作模式"><button class="mode active" data-pane="analysis" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg>JD 分析</button><button class="mode" data-pane="creation" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5H5v14h14v-7M11 14l1-4 6-6 3 3-6 6z"/></svg>JD 生成</button></nav>
 <section class="pane active" id="analysis"><div class="layout"><div class="panel inputpanel"><div class="paneltitle">输入岗位 JD</div><p class="hint">粘贴招聘需求，明确目标行业与期望 Base 地，形成可复制的寻访方案。</p><div class="labelrow"><label class="label" for="jd">JD 内容</label><button class="tiny" id="loadJD">填入示例</button></div><textarea class="textarea" id="jd" placeholder="在这里粘贴完整 JD，或至少提供岗位名称、职责和任职要求……"></textarea><div class="target-fields">
 <div class="labelrow"><label class="label" for="industry">目标行业</label><span class="quiet">选填 · 可填写多个</span></div>
 <input class="input" id="industry" placeholder="如：连锁餐饮、零售、酒店" aria-describedby="industryHelp">
