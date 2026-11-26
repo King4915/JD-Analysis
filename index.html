@@ -130,14 +130,6 @@ body{background:#f2f0ec;color:var(--ink);font-size:14px;line-height:1.65;letter-
 .brand-signature{background:#fff;border-radius:8px;padding:6px 10px;gap:9px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
 .brand-signature .hdl-logo{color:#c51f2a}
 .brand-signature .brandname{color:#c51f2a;font-weight:750;letter-spacing:.8px}
-.auth-veil{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px;background:rgba(16,27,40,.66);backdrop-filter:blur(5px)}
-.auth-card{width:min(100%,390px);padding:28px;border:1px solid #e7e1d9;border-radius:15px;background:#fff;box-shadow:0 22px 70px rgba(11,20,30,.24)}
-.auth-card h2{margin:0;color:#172536;font-size:20px}.auth-card p{margin:8px 0 18px;color:#74808c;font-size:12px;line-height:1.7}
-.auth-card label{display:block;margin:0 0 7px;color:#39495b;font-size:11px;font-weight:650}
-.auth-card input{width:100%;padding:11px 12px;border:1px solid #dedfdf;border-radius:8px;outline:none}
-.auth-card input:focus{border-color:#9d8064;box-shadow:0 0 0 3px rgba(161,123,88,.12)}
-.auth-submit{width:100%;margin-top:12px;padding:11px;border:0;border-radius:8px;background:#172536;color:#fff;font-size:12px;font-weight:650}
-.auth-submit:disabled{opacity:.65;cursor:wait}.auth-error{min-height:18px;margin-top:8px;color:#a5222a;font-size:11px}.auth-foot{margin-top:5px;color:#9099a2;font-size:10px}
 </style>
 </head>
 <body>
@@ -149,7 +141,7 @@ body{background:#f2f0ec;color:var(--ink);font-size:14px;line-height:1.65;letter-
       <span class="brand-divider" aria-hidden="true"></span>
       <div class="product-identity"><h1>JD 研创台</h1><p class="product-caption">岗位分析 · JD 生成</p></div>
     </div>
-    <div class="identity-meta"><span>内部使用</span><span class="status">团队口令</span></div>
+    <div class="identity-meta"><span>开放访问</span><span class="status">无需登录</span></div>
   </div>
   <p class="intro-description">解析岗位需求，明确寻访方向；从业务想法出发，共创合适的 JD。</p>
 </header>
@@ -170,13 +162,11 @@ body{background:#f2f0ec;color:var(--ink);font-size:14px;line-height:1.65;letter-
 <div class="panel block"><div class="blockhead"><span class="blocktitle">简历筛选重点</span><button class="copy" data-copy="focus">复制</button></div><div class="searchline" id="focus"></div></div></div></div></div></section>
 <section class="pane" id="creation"><div class="layout"><div class="panel inputpanel"><div class="paneltitle">先把业务想法写下来</div><p class="hint">不需要整理成标准 JD。写业务目标、团队现状、希望解决的问题，想到什么写什么。</p><div class="labelrow"><label class="label" for="notes">业务零散信息</label><button class="tiny" id="loadNotes">填入示例</button></div><textarea class="textarea short" id="notes" placeholder="例如：我们现在最需要解决什么问题？希望这个人来了之后做成什么？"></textarea><div class="labelrow"><label class="label" for="context">其他背景（选填）</label><span class="quiet">级别、团队、地点、汇报对象等</span></div><textarea class="textarea short" id="context" placeholder="可以继续补充，没有也可以先开始"></textarea><button class="btnmain" id="create"><span class="star">✦</span>生成岗位说明书初稿</button><p class="micro">初稿出来后可以编辑正文，也可以在下方告诉模型怎么改。</p></div>
 <div class="panel draftpanel"><div class="draftlabel"><span class="drafttitle">岗位说明书草稿</span><span class="version" id="versionLabel">尚未生成</span></div><textarea class="draftarea" id="draft" placeholder="生成的 JD 会出现在这里。你可以直接编辑，或用下方输入框继续提出修改意见。"></textarea><div class="iteration"><label for="feedback">还想怎么调整？继续补充你的想法</label><div class="iterrow"><textarea id="feedback" placeholder="例如：职责少写一些，突出从0到1搭建；任职要求不要卡学历，增加餐饮一线经验"></textarea><button class="iterbtn" id="refine">按意见继续修改</button></div><p class="iterationhint">每轮修改后形成一个新版本；业务可以反复补充，满意后复制发布。</p><div class="history" id="history"><span class="historyitem current">等待第一版</span></div><div style="display:flex;justify-content:flex-end;margin-top:12px"><button class="btnghost" id="copyDraft">复制 JD 正文</button></div></div></div></div></section>
-<p class="note">分析结果由服务端调用 DeepSeek 生成；岗位输入、分析记录与 JD 版本保存在 Supabase。</p></main><div class="toaster" id="toast"></div>
-<div class="auth-veil" id="authGate"><div class="auth-card"><h2>进入 JD 研创台</h2><p>请输入团队访问口令。口令由管理员在 Supabase 中设置，关闭此浏览器标签后需要重新输入。</p><form id="authForm"><label for="appPasscode">团队口令</label><input id="appPasscode" type="password" autocomplete="current-password" required placeholder="输入团队口令"><button class="auth-submit" id="authSubmit" type="submit">验证并进入</button><div class="auth-error" id="authError" role="alert"></div></form><div class="auth-foot">如果暂未配置后端，请先完成部署步骤。</div></div></div>
+<p class="note">无需登录即可使用。AI 分析、岗位输入和 JD 版本保存在 Supabase。</p></main><div class="toaster" id="toast"></div>
 <script>
 const $ = id => document.getElementById(id);
 const SUPABASE_FUNCTION_URL = "https://dttouaioormlqmibfyuh.supabase.co/functions/v1/jd-api";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_mTgqt1VwlASfQN4Z6N-2Eg_dJu2FIu1";
-const PASSCODE_SESSION_KEY = "jd_analyzer_passcode";
 let versions = [];
 let analysisSnapshot = null;
 let analysisWorkspaceId = "";
@@ -192,33 +182,23 @@ function toast(message) {
   node.classList.add("show");
   setTimeout(() => node.classList.remove("show"), 2200);
 }
-function showGate(message) {
-  $("authGate").classList.remove("hidden");
-  if (message) $("authError").textContent = message;
-}
 function configured() {
   return !SUPABASE_FUNCTION_URL.includes("YOUR_PROJECT_REF") &&
     !SUPABASE_PUBLISHABLE_KEY.includes("PASTE_YOUR");
 }
-async function invoke(action, payload = {}, passcodeOverride = "") {
+async function invoke(action, payload = {}) {
   if (!configured()) throw new Error("请先在页面代码顶部填写 Supabase 项目地址和 Publishable key");
-  const passcode = passcodeOverride || sessionStorage.getItem(PASSCODE_SESSION_KEY) || "";
   const headers = {
     "Content-Type": "application/json",
     "apikey": SUPABASE_PUBLISHABLE_KEY
   };
-  if (action !== "verify" && passcode) headers["x-app-passcode"] = passcode;
   const response = await fetch(SUPABASE_FUNCTION_URL, {
     method: "POST",
     headers,
-    body: JSON.stringify(Object.assign({ action }, payload, action === "verify" ? { passcode } : {}))
+    body: JSON.stringify(Object.assign({ action }, payload))
   });
   const result = await response.json().catch(() => ({}));
   if (!response.ok) {
-    if (response.status === 401 && action !== "verify") {
-      sessionStorage.removeItem(PASSCODE_SESSION_KEY);
-      showGate("口令已失效，请重新输入。");
-    }
     throw new Error(result.error || "服务请求失败，请稍后重试");
   }
   return result;
@@ -359,27 +339,6 @@ $("loadNotes").onclick = () => {
   toast("已填入业务信息示例");
 };
 
-$("authForm").addEventListener("submit", async event => {
-  event.preventDefault();
-  const passcode = $("appPasscode").value.trim();
-  if (!configured()) { $("authError").textContent = "请先替换页面代码顶部的 Supabase 配置项。"; return; }
-  $("authSubmit").disabled = true;
-  $("authSubmit").textContent = "正在验证…";
-  $("authError").textContent = "";
-  try {
-    await invoke("verify", {}, passcode);
-    sessionStorage.setItem(PASSCODE_SESSION_KEY, passcode);
-    $("authGate").classList.add("hidden");
-    $("appPasscode").value = "";
-    await loadCurrentWorkspace();
-  } catch (error) {
-    $("authError").textContent = error.message || "口令验证失败";
-  } finally {
-    $("authSubmit").disabled = false;
-    $("authSubmit").textContent = "验证并进入";
-  }
-});
-
 $("analyze").onclick = () => withBusy("analyze", "正在分析…", async () => {
   const jd = $("jd").value.trim();
   if (!jd) throw new Error("请先粘贴一份 JD");
@@ -460,12 +419,6 @@ $("draft").addEventListener("blur", async () => {
 });
 $("copyDraft").onclick = () => copy($("draft").value.trim());
 
-const savedPasscode = sessionStorage.getItem(PASSCODE_SESSION_KEY);
-if (savedPasscode) {
-  invoke("verify", {}, savedPasscode).then(() => {
-    $("authGate").classList.add("hidden");
-    loadCurrentWorkspace();
-  }).catch(() => { sessionStorage.removeItem(PASSCODE_SESSION_KEY); showGate(); });
-}
+loadCurrentWorkspace();
 
 </script></body></html>
